@@ -1,12 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#Necessário importar a biblioteca "mysql.connector" para conexão e "errorcode" para tratar erros, caso lançado uma exceção.
 import mysql.connector
 from mysql.connector import errorcode
 
-# Criando um dicionário (chave:valor) para armazenar os parametros de conexão com o banco.
-# Um dicionario é uma estrutura de dados não ordenados, e que você pode utilizar elementos de chave e valor, também conhecido como "matrizes associativas".
 config = {
   'host':'<IP_HOST>',
   'user':'<DATABASE_USER>',
@@ -14,7 +11,6 @@ config = {
   'database':'<DATABASE_NAME>'
 }
 
-# Constuindo uma string de conexão e tratando basicamente as exceptions em caso de falha.
 try:
     conn = mysql.connector.connect(**config)
     print("Connection established")
@@ -27,10 +23,8 @@ except mysql.connector.Error as err:
     else:
         print(err)
 else:
-    #Instanciando um objeto "cursor" para utilizarmos nas chamadas SQL abaixo
     cursor = conn.cursor()
 
-    # Executando comandos SQL na Base
     # INSERT
     print("Exemplo de INSERT:")
     cursor.execute("INSERT INTO teste (nome) VALUES ('DUDA');")
@@ -60,7 +54,6 @@ else:
     print("Deleted",cursor.rowcount,"row(s) of data.")
     print("-----------------")
 
-# Finalizando a conxão com o banco
 conn.commit()
 cursor.close()
 conn.close()
