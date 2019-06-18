@@ -39,7 +39,6 @@ else:
 
     for row in rows:
         print("Data row = ", row)
-
     print("-----------------")
 
     #UPDATE
